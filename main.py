@@ -6,6 +6,13 @@ import sys
 # For e.g., "/home/src4026/SmartGuard2.1"
 sys.path.insert(0, "path/to/SmartGuard2.1/")
 
+mod_channels = [
+        "##minetest-ctf"
+]
+
+log_irc_server = "libera"
+log_irc_channel = "##smartguard"
+
 from blacklist import blacklist1, blacklist2
 from smartguard import SmartGuard
 
@@ -15,9 +22,6 @@ PLUGIN_AUTHOR = "GreenBlob and s20"
 PLUGIN_VERSION = "2.1.0.0"
 PLUGIN_LICENSE = "GPL-3.0"
 
-mod_channels = [
-        "##minetest-ctf"
-]
 
 
 def strip_color_codes(message):
@@ -34,7 +38,7 @@ def hook_print_cb(data, signal, signal_data):
         msg_auth = msg_org[0]
         msg_cont = msg_org[1] if len(msg_org) > 1 else ""
         sus_check = SmartGuard()
-        buffer = weechat.info_get("irc_buffer", "libera,##smartguard")
+        buffer = weechat.info_get("irc_buffer", f"{log_irc_server},{log_irc_channel}")
         if sus_check.is_sus(msg_cont, msg_auth, blacklist1, blacklist2):
             log_message = f'Player {msg_auth} said "{msg_cont}"'
             weechat.command(buffer, log_message)
