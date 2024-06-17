@@ -24,6 +24,7 @@ def strip_color_codes(message):
   pattern = re.compile(r"\x03(?:\d{1,2}(?:,\d{1,2})?)?|\x0f", re.UNICODE)
   return pattern.sub("", message)
 
+
 def hook_print_cb(data, signal, signal_data):
     weechat.prnt("", signal_data)
     parsed_message = weechat.info_get_hashtable("irc_message_parse", {"message": signal_data})
@@ -38,6 +39,7 @@ def hook_print_cb(data, signal, signal_data):
             log_message = f'Player {msg_auth} said "{msg_cont}"'
             weechat.command(buffer, log_message)
     return weechat.WEECHAT_RC_OK
+
 
 if __name__ == '__main__':
     weechat.register(
