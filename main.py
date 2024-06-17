@@ -12,7 +12,7 @@ from smartguard import SmartGuard
 PLUGIN_NAME = "SmartGuard2.1"
 PLUGIN_DESCRIPTION = "Aids moderation by narrowing messages down to suspicious ones."
 PLUGIN_AUTHOR = "GreenBlob and s20"
-PLUGIN_VERSION = "Got to ask boss"
+PLUGIN_VERSION = "2.1.0.0"
 PLUGIN_LICENSE = "GPL-3.0"
 
 mod_channels = [
